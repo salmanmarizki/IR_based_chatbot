@@ -1,6 +1,4 @@
 
-#Meet Robo: your friend
-
 #import necessary libraries
 import io
 import random
@@ -16,13 +14,6 @@ warnings.filterwarnings('ignore')
 import nltk
 from nltk.stem import WordNetLemmatizer
 from nltk.stem.porter import PorterStemmer
-
-nltk.download('popular', quiet=True) # for downloading packages
-
-# uncomment the following only the first time
-# nltk.download('punkt') # first-time use only
-# nltk.download('wordnet') # first-time use only
-
 
 #Reading in the corpus
 with open('fsktm.txt','r', encoding='utf8', errors ='ignore') as fin:
@@ -46,7 +37,7 @@ def tokenize(text):
         stems.append(PorterStemmer().stem(item))
     return stems
 
-# Keyword Matching
+# Keyword Matching for greetings/first input
 GREETING_INPUTS = ("hello", "hi", "greetings", "sup", "what's up","hey",)
 GREETING_RESPONSES = ["hi", "hey", "*nods*", "hi there", "hello", "I am glad! You are talking to me"]
 
@@ -81,24 +72,24 @@ def response(user_response):
 
 
 flag=True
-print("ROBO: My name is Robo. I will answer your queries about FSKTM Bachelor Courses. If you want to exit, type Bye!")
+print("DOMO: My name is DOMO. I will answer your queries about FSKTM Bachelor Courses. If you want to exit, type Bye!")
 while(flag==True):
     user_response = input()
     user_response=user_response.lower()
     if(user_response!='bye'):
         if(user_response=='thanks' or user_response=='thank you' ):
             flag=False
-            print("ROBO: You are welcome..")
+            print("DOMO: You are welcome..")
         else:
             if(greeting(user_response)!=None):
-                print("ROBO: "+greeting(user_response))
+                print("DOMO: "+greeting(user_response))
             else:
-                print("ROBO: ",end="")
+                print("DOMO: ",end="")
                 print(response(user_response))
                 sent_tokens.remove(user_response)
     else:
         flag=False
-        print("ROBO: Bye! take care..")    
+        print("DOMO: Bye! take care..")    
         
         
 
